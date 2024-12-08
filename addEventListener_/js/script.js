@@ -1,19 +1,24 @@
-const caixa1 = document.querySelector("#caixa1");       // pegando a caixa de origem
-const caixa2 = document.querySelector("#caixa2");           // pegando a caixa de destino
-const btn = document.querySelector("#btn_copiar");              // pegando o botão para copiar
+const caixa1 = document.querySelector("#caixa1");
+const caixa2 = document.querySelector("#caixa2");
+const btn_transferir = document.querySelector("#btn_transferir");
 
-const hardSkills = [...document.querySelectorAll(".hardskill")];        // selecionando todas as "hardskills" (tanto front quanto back)
+const hardSkills = [...document.querySelectorAll(".hardskill")];
 
-hardSkills.map((el) => {        // utilizando 'map' para percorrrer todos elementos e adicionar o ouvinte de evento para cada "hardskill"
+hardSkills.map((el) => {
     el.addEventListener("click", (evt) => {
-        const hardskill = evt.target; // Pegando o elemento clicado
-        hardskill.classList.toggle("selecionado"); // Adiciona ou remove a classe 'selecionado'
+        const hardskill = evt.target;
+        hardskill.classList.toggle("selecionado");
     });
 });
 
-btn.addEventListener("click", () => {       // adicionando o ouvinte de evento para o botão
-    const skillSelecionadas = [...document.querySelectorAll(".selecionado")];       // pega todos os elementos com a classe 'selecionado'
-    skillSelecionadas.map((el) => {     // 'movendo' as skills selecionadas para a caixa2
+btn_transferir.addEventListener("click", () => {
+    const skillSelecionadas = [...document.querySelectorAll(".selecionado")];       // lista de skills selecionadas
+    skillSelecionadas.map((el) => {
         caixa2.appendChild(el);
+    });
+    
+    const skillNaoSelecionadas = [...document.querySelectorAll(".hardskill:not(.selecionado)")];      // chave 'not' lista as skills que não possuem a classe 'selecionado'
+    skillNaoSelecionadas.map((el) => {     // 'movendo' as skills não selecionadas para a caixa1
+        caixa1.appendChild(el);
     });
 });
