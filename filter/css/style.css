@@ -75,7 +75,7 @@ button {
     width: 30%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; 
 }
 
 #nova_skill input {

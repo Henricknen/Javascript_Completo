@@ -30,4 +30,4 @@ btn_skill_selecionada.addEventListener("click", (evt)=> {      // inserindo even
     radio_selecionado = radio_selecionado[0];       // variável 'radio_selecionado' somente da possição 0 ou seja somente o radio selecionado
     const skill_selecionadaa = radio_selecionado.parentNode.previousSibling.textContent     // pegando o irmão anterior 'previousSibling' do parentNode apenas o texto 'textContent'
     alert("HardSkill seleçionada: " + skill_selecionadaa);      // imprimindo em alert a 'skill_selecionadaa'
-});
+}); 
