@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang = "pt-br">
+<html lang="pt-br">
+
 <head>
-    <meta charset = "UTF-8">
-    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>objeto</title>
-    <link rel = "stylesheet" href = "css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    
-    <form action = "js/script.js">
-        <label for = "nome">Nome</label>
-        <input type = "text" id = "nome" name = "nome" required>
 
-        <label for = "sobrenome">Sobrenome</label>
-        <input type = "text" id = "sobrenome" name = "sobrenome" required>
-
-        <button type = "submit">Enviar</button>
-    </form>
-    <div id = "caixa" class = "caixa">
-        
+    <div class="campoForm">
+        <label>Nome</label>
+        <input type="text" name="f_nome" id="f_nome" value="" />
     </div>
 
-    <script src = "js/script.js"></script>
+    <div class="campoForm">
+        <label>Veloçidade Maxima</label>
+        <input type="number" name="f_velmax" id="f_velmax" value="" />
+    </div>
+
+    <div class="campoForm">
+        <button id="btn_add" type="button">Adicionar</button>
+    </div>
+
+    <div class="res"></div>
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>

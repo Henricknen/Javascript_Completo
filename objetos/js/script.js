@@ -1,11 +1,11 @@
-class Profissional {      // criando uma classe chamada 'Profissional'
-    constructor(pnome) {         // método 'construtor', que é chamado automaticamente quando se instancia um objeto dessa classe, recebendo um parâmetro chamado 'pnome'
-        this.nome = pnome;      // 'nome' é uma 'propriedade' do objeto da classe, que recebe o valor do parâmetro 'pnome'
+class Profissional {      // correção da classe Profissional
+    constructor(pnome) {         
+        this.nome = pnome;      
     }
 }
 
-let p1 = new Profissional("Luis Henrique S F");      // o operador 'new' permite instançiar um novo 'objeto' da classe 'Profissional'
-let p2 = new Profissional("Javascript");        // passando 'parâmetro' Javascript nas instançiação
+let p1 = new Profissional("Luis Henrique S F");      
+let p2 = new Profissional("Javascript");        
 let p3 = new Profissional("ReactJs");
 let p4 = new Profissional("VueJs");
 let p5 = new Profissional("PHP");
@@ -18,74 +18,99 @@ console.log(p4.nome);
 console.log(p5.nome);
 console.log(p6.nome);
 
-// ----------------------------------------------------------------------
+// ------------------------------------
 
-class Carro {      // classe 'Carro'
-    construtor(pnome, ptipo) {      // passando como parâmetro no contrutor 'pnome' e 'ptipo'
-       this.nome = pnome
+class Carro {      // correção da classe Carro
+    constructor(pnome, ptipo) {
+       this.nome = pnome;
        if(ptipo == 1) {
-        this.tipo = "Esportivo"
-        this.velmax = 300
+        this.tipo = "Esportivo";
+        this.velmax = 300;
        } else if(ptipo == 2) {
-        this.tipo = "Ultilitario"
-        this.velmax = 100
+        this.tipo = "Ultilitário";
+        this.velmax = 100;
        } else if(ptipo == 3) {
-        this.tipo = "Passeio"
-        this.velmax = 160
+        this.tipo = "Passeio";
+        this.velmax = 160;
        } else {
-        this.tipo = "Militar"
-        this.velmax = 180
+        this.tipo = "Militar";
+        this.velmax = 180;
        }
     }
 
-    getNome() {     // método 'getNome' retornará o nome do objeto
-        return this.nome
+    getNome() {     
+        return this.nome;
     }
 
     getTipo() {
-        return this.tipo
+        return this.tipo;
     }
 
     getVelMax() {
-        return this.vemax
+        return this.velmax;
     }
 
-    getInfo() {     // método 'getInfo' retorna o 'nome' o 'tipo' e a 'velmax' em um array
-        return [this.nome, thhis.tipo, this.velmax]
+    getInfo() {     
+        return [this.nome, this.tipo, this.velmax];
     }
 
-    setNome(nome) {     // método 'setNome' define um nome 
-        this.nome = nome
+    setNome(nome) {     
+        this.nome = nome;
     }
 
     setTipo(tipo) {
-        this.tipo = tipo
+        this.tipo = tipo;
     }
     
     setVelMax(velmax) {
-        this.velmax = velmax
+        this.velmax = velmax;
     }
 
-    info() {        // método 'info' retorna todas as propriedades de uma única vez
-        console.log(`Nome: ${this.nome}`);     // utilizando 'tempate string' `${}`
+    info() {        
+        console.log(`Nome: ${this.nome}`);
         console.log(`Tipo: ${this.tipo}`);
         console.log(`V. max: ${this.velmax}`);
         console.log("--------------------------------");
     }
 }
 
-let c1 = new Carro("Rapido", 1);       // passando 'nome' e 'tipo' na 'instançiação'
+let c1 = new Carro("Rapido", 1);       
 let c2 = new Carro("Super Luxo", 2);
 let c3 = new Carro("Completo", 3);
-let c4 = new Carro("4x$", 4);
+let c4 = new Carro("4x4", 4);
 
-c1.setNome("Super veloz");      // 'alterando' o nome de c1
+c1.setNome("Super veloz");      
 c1.setVelMax(500);
 
-c1.info();       // chamando o métoddo 'info'
+c1.info();       
 // c2.info();
 // c3.info();
 // c4.info();
 
-// console.log(c1.getNome());  // imprime o nome do carro 1
-// console.log(c1.getInfo());       // chamando o método 'getInfo()'
+// ------------------------------------
+let carros = [];        // array 'carros' iniciado vazio
+
+const btn_add = document.querySelector("#btn_add");
+const res = document.querySelector(".res");
+
+const addCarros = () => {  // função 'addCarros' adiciona o novo carro no array 'carros' e mostra no DOM
+    res.innerHTML = "";     // limpando o elemento antes de adiçionar um novo carro
+    carros.forEach(c => {  // utilizando 'forEach', que itera sobre o array
+        const div = document.createElement("div");      // cria uma nova 'div' para cada carro
+        div.setAttribute("class", "carro");
+        div.innerHTML = `Nome: ${c.getNome()}<br/>Velocidade Máxima: ${c.getVelMax()}`;
+        res.appendChild(div);       // adiciona a 'div' criada ao elemento 'res' no DOM
+    });
+};
+
+btn_add.addEventListener("click", () => {       // função para adicionar um carro ao array 'carros'
+    const nome = document.querySelector("#f_nome").value;
+    const velmax = document.querySelector("#f_velmax").value;
+
+
+    if (nome && velmax) {
+        const novoCarro = new Carro(nome, parseInt(velmax));        // criando um novo objeto 'Carro'
+        carros.push(novoCarro);     // adicionando o carro ao array 'carros'
+        addCarros();        // chamando a função para atualizar o DOM com os carros        
+    }
+});
