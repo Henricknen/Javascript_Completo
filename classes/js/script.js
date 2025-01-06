@@ -9,6 +9,12 @@ const btn_addCarro = document.querySelector("#btn_addCarro");
 
 let a_carros = [];      // variável a_carro é um array em branco
 
+const removerCarro =(quem)=> {      // função que 'removerá' carros
+    a_carros = a_carros.filter((el)=> {        // 'filter' espeçifica uma fitragem
+        return el.nome != quem
+    });
+}
+
 f_tipoMilitar.addEventListener("click", (evt)=> {       // adiçinando evento de click quando o input 'militar' for clicado
     f_nome.value = "";      // limpando o input 'nome'
     f_portas.value = 0;         // zerando o input 'portas'
@@ -31,8 +37,14 @@ const gerenciarExibicaoCarros =()=> {       // função 'gerenciarExibicaoCarros
     carros.innerHTML = ""       // zerando o conteudo de 'carros'
     a_carros.forEach((c) => {
         const div = document.createElement("div");   // 'createElement' criará novo carro
-        const btn = document.createElement("button");
-        
+        const btn = document.createElement("button");       // criando botão         
+        btn.innerHTML = "remover";
+        btn.addEventListener("click",(evt)=> {
+            const quemSeraRemovido = evt.target.parentNode.dataset.nome
+            removerCarro(quemSeraRemovido);      // passando para função 'quemSeraRemovido' para remoção
+            console.log(a_carros);
+            gerenciarExibicaoCarros();     // depois da remoção chamar novamente a propria função 'gerenciarExibicaoCarros'
+        });
         div.setAttribute("class", "carro");
         div.setAttribute("data-nome", c.nome);
         div.innerHTML = `Nome: ${c.nome}<br/>`;     // adiçionando a propriedade nome no DOM
@@ -40,6 +52,7 @@ const gerenciarExibicaoCarros =()=> {       // função 'gerenciarExibicaoCarros
         div.innerHTML += `Cor: ${c.cor}<br/>`;
         div.innerHTML += `Blindagem: ${c.blindagem}<br/>`;
         div.innerHTML += `Municao: ${c.municao}<br/>`;
+        btn.innerHTML = "remover"       // alterando o nome do botão criado para 'remover'
         div.appendChild(btn);
         carros.appendChild(div);     // 'appendChild' mostrará todos carros que estão no array carros
         
