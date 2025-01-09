@@ -1,32 +1,60 @@
-const teclasNum = [...document.querySelectorAll(".num")];        // Pegando todas as teclas que têm a classe 'num'
-const teclasOp = [...document.querySelectorAll(".op")];          // Pegando todas as teclas de operação
-const teclaRes = document.querySelector(".res");                 // Apenas uma tecla de resultado, então usamos querySelector
-const display = document.querySelector(".display");              // Display também é um único elemento
+const teclasNum = [...document.querySelectorAll(".num")];      // pegando todas as teclas que têm a classe 'num'
+const teclasOp = [...document.querySelectorAll(".op")];
+const teclaRes = document.querySelector(".res");       // apenas uma tecla de resultado, então usamos querySelector
+const display = document.querySelector(".display");
 const ton = document.getElementById("ton");
 const tlimpar = document.getElementById("tlimpar");
+const tigual = document.getElementById("tigual");
+
+let sinal = false;
+let decimal = false;
 
 teclasNum.forEach((el) => {
-    el.addEventListener("click", (evt) => {     // Adicionando evento de click
-        display.textContent += evt.target.textContent;  // Usamos textContent para adicionar o número ao display
+    el.addEventListener("click", (evt) => {     // adicionando evento de click
+        sinal = false;        
+        if(evt.target.innerHTML == ",") {
+            if(!decimal) {
+                decimal = true;
+                if(display.innerHTML == "0") {
+                    display.innerHTML = "0,";
+                } else {                    
+                    display.innerHTML += evt.target.innerHTML;
+                }
+            }
+        } else {
+            if(display.innerHTML == "0") {
+                display.innerHTML = "";
+            }
+            display.innerHTML += evt.target.innerHTML;
+        }
     });
 });
 
 teclasOp.forEach((el) => {
     el.addEventListener("click", (evt) => {
-        display.textContent += evt.target.textContent;  // Adiciona o operador no display
+        if(!sinal) {
+            sinal = true;
+            if(display.innerHTML == "0") {
+                display.innerHTML = "";
+            }
+            if(evt.target.innerHTML == "x") {
+                display.innerHTML += "*";
+            } else {
+                display.textContent += evt.target.innerHTML;      // adiciona o operador no display
+            }
+        }
     });
 });
 
 tlimpar.addEventListener("click", () => {
-    display.textContent = "0";  // Reseta o display para "0" ao clicar no botão de limpar
+    sinal = false;
+    decimal = false;
+    display.textContent = "0";  // reseta o display para "0" ao clicar no botão de limpar
 });
 
-// Adicionar funcionalidade para o botão "=" (igual) que realiza o cálculo
-teclaRes.addEventListener("click", () => {
-    try {
-        // Avalia a expressão no display e exibe o resultado
-        display.textContent = eval(display.textContent.replace(",", "."));  // Substitui a vírgula por ponto para a operação correta
-    } catch (e) {
-        display.textContent = "Erro";  // Caso ocorra um erro (por exemplo, divisão por zero), exibe "Erro"
-    }
+tigual.addEventListener("click", () => {
+    sinal = false;
+    decimal = false;
+    const res = eval(display.innerHTML);        // utilizando função 'eval' para avaliar a expressão de entrada e executar-la(resolvendo)
+    display.innerHTML = res;
 });
