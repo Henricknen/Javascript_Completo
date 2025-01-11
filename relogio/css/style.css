@@ -1,0 +1,29 @@
+* {
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Necessário para que o contêiner ocupe toda a altura */
+    margin: 0; /* Remove margens padrão */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #222; Opcional, para melhor contraste */
+}
+
+.div_relogio {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    background-color: #444;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
+    padding: 10px;
+    border-radius: 5px;
+}
