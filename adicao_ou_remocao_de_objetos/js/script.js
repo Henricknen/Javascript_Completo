@@ -51,12 +51,33 @@ class Bola {
         const div = document.createElement("div");
         div.setAttribute("id", this.id);
         div.setAttribute("class", this.id);
-        div.setAttribute("style", `left:${this.px};top:${this.py};width:${this.tam};height:${this.tam};background-color:rgb(${this.r},${this.g},${this.b})`);
+        div.setAttribute("style", `left:${this.px}px;top:${this.py}px;width:${this.tam}px;height:${this.tam}px;background-color:rgb(${this.r},${this.g},${this.b})`);
         this.palco.appendChild(div);        // adiçionando a bolinha no DOM
     }
 
-    controlar =()=> {       // método 'controlar' controla a movimentação da bolinha
+    controle_bordas =()=> {
+        if(this.px + this.tam >= larguraPalco) {
+            this.dirx = -1;
+        } else if(this.dirx <= 0) {
+            this.dirx = 1;
+        }
+        
+        if(this.py + this.tam >= larguraPalco) {
+            this.diry = -1;
+        } else if(this.dirx <= 0) {
+            this.diry = 1;
+        }
 
+    }
+
+    controlar =()=> {       // método 'controlar' controla a movimentação da bolinha
+        this.controle_bordas();
+        this.px = this.dirx * this.velx;
+        this.px = this.diry * this.vely;
+        this.eu.setAttribute("style", `left:${this.px}px;top:${this.py}px;width:${this.tam}px;height:${this.tam}px;background-color:rgb(${this.r},${this.g},${this.b})`);
+        if((this.px > larguraPalco) || (this.py > altura)) {
+            this.remover();
+        }
     }
 }
 
@@ -68,12 +89,12 @@ window.addEventListener("resize", (evt)=> {     // adiçionando evento quando a 
 btn_add.addEventListener("resize", (evt)=> {
     const qtde = txt_qtde.value;        // obtendo a quantidade de objetos
     for(let i = 0; i < qtde; i++) {
-        // instanciar novos objetos
+        bolas.push(new Bola(arrayBolas, palco));
     }
 });
 
 btn_remover.addEventListener("resize", (evt)=> {
     bolas.map((b)=> {       // utilizando função map para percorrer elemento por elemento que estiver dentro do array bolas
-        // criar função para remove bolinhas
+        b.remover();
     });
 });
