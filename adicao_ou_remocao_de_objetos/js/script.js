@@ -24,22 +24,35 @@ class Bola {
         this.palco = palco;
         this.arrayBolas = arrayBolas;
         this.id = Date.now() + "_" + Math.floor(Math.random() * 100000000);
-        this.desenhar();        // chamando método 'desenhar'
+        this.desenhar();        // chamando método   'desenhar'
         this.controle = stInterval(this.controlar, 10);
-        this.controle = document.getElementById(this.id);
-        this.eu = ""
+        this.eu = document.getElementById(this.id);
+        numBola++;
+        num_objetos.innerHTML = numBola;
     }
 
     minhaPos =()=> {        // método 'minhaPos' verifica qual é a posição da bolinha
-
+        return this.arrayBolas.indexOf(this);       // retorna a posição da bolinha
     }
 
     remover =()=> {     // método 'remover' remove a bolinha
-
+        clearInterval(this.controle);
+        bolas = bolas.filter((b)=> {
+            if(b.id != this.id) {
+                return b;
+            }
+        });
+        this.eu.remove();     // objeto 'eu' do DOM 'chamando' método remove
+        numBola--;
+        num_objetos.innerHTML = numBola;
     }
 
     desenhar =()=> {        // método 'desenhar' desenha, cria a bolinha
-        
+        const div = document.createElement("div");
+        div.setAttribute("id", this.id);
+        div.setAttribute("class", this.id);
+        div.setAttribute("style", `left:${this.px};top:${this.py};width:${this.tam};height:${this.tam};background-color:rgb(${this.r},${this.g},${this.b})`);
+        this.palco.appendChild(div);        // adiçionando a bolinha no DOM
     }
 
     controlar =()=> {       // método 'controlar' controla a movimentação da bolinha
