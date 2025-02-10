@@ -6,24 +6,24 @@ btn_texto.addEventListener("click", (evt)=> {
 
 });
 
-let num = 10;
+let num = 10;       // variáveis
 let codificando = "Javascript";
 
 // LocalStorage
 
-localStorage.setItem("nome", "Luis Henrique Silva Ferreira");
+localStorage.setItem("nome", "Luis Henrique Silva Ferreira");       // utilizando o metodo 'setItem' onde é necessário inserir a chave e valor que será 'armazenado' no localStorage
 localStorage.setItem("profissional", "FullStack");
 localStorage.setItem("codificando", codificando);
 
-alert(localStorage.length);
+alert(localStorage.length);     // obtendo o 'tamanho' do localStorage
 
-alert(localStorage.getItem(localStorage.key(0)));
+alert(localStorage.getItem(localStorage.key(0)));       // utilizando 'key' para localizar uma chave em uma posição espeçifica
 
-alert(localStorage.getItem("nome"));
+alert(localStorage.getItem("nome"));        // método 'getItem' é utilizado para 'obter' o valor da chave
 alert(localStorage.getItem("profissional"));
 alert(localStorage.getItem("codificando"));
 
-localStorage.clear();
+localStorage.clear();       // 'limpa' as chaves do localStorage 
 
 // SessionStorage
 
