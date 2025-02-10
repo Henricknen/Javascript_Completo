@@ -1,0 +1,14 @@
+var http = require('http');
+http.createServer(function (req, res) {
+  res.setHeader('Acess-Control-Allow-Origin', '*');
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  
+  let numero = {
+  valor: Math.floor(Math.random() * 100)
+  }
+  
+  res.end(JSON.stringify(numero));
+}).listen(8080);
+
+
+// API retorna um 'json', valor aleatório entre 0 a 100
