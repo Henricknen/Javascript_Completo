@@ -1,17 +1,20 @@
-const head = document.head;     // assoçiando elemento head na variável 'head'
 const body = document.body;
 
-const estilo = "</link rel = 'styleshet' 'text/css' href = 'topo.css'/>";       // link do arquivo topo.css na variável estilo
-head.innerHTML += estilo;       // assoçiando arquivo css no head
+const estilotopo = 
+    "display: flex;" +
+    "justify-content: space-between;" +
+    "align-items: center;" +
+    "background-color: #e00f;"
 
 const topo = document.createElement("div");     // criando uma 'div' topo
 topo.setAttribute("id", "topo");        // inserindo atributo 'id'
-topo.setAttribute("class", "topo");
+topo.setAttribute("style", estilotopo);
 body.prepend(topo);     // 'anexando' div criada em body
 
+const estilo_img_logo = "width:200px"
 const logo =        // criando 'logo'
-"<div id = 'logo' class = 'login'>" +
-    "<img src = 'logo.png' title = 'Header'/>" +
+"<div id = 'logo' class = 'logo'>" +
+    "<img src = 'logo.png' title = 'Header' style = '" + estilo_img_logo + "'/>" +
 "</div>";
 
 topo.innerHTML += logo;     // inserindo logo 'dentro' do topo
