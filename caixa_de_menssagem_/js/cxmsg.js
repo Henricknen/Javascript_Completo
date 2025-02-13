@@ -24,16 +24,16 @@ class Cxmsg {
             "height: 100vh;" +
             "background-color: rgba(0,0,0,0.7);"
         this.divmsg.setAttribute("id", "divmsg");
-        this.divmsg.setAttribute("style", estilo_divmsg);
-        this.destino.prepend(this.divmsg);
+        this.divmsg.setAttribute("style", estilo_divmsg);       // definindo o atributo 'style' para o valor contido na variável 'estilo_divmsg'
+        this.destino.prepend(this.divmsg);      // adiçinando div 'divmsg' no destino 'body'
         
         const estilo_areaCxmsg =
             "display: flex;" +
             "justify-content: flex-start;" +
             "align-items: flex-start;" +
-            "flex-direction: coumn;" +
+            "flex-direction: column;" +
             "width: 300px;"
-        const areaCxmsg = document.createElement("div");
+        const areaCxmsg = document.createElement("div");        // criando a 'areaCxmsg' será a área central onde estará os elementos 'titulo', 'corpo' e 'roda pé'
         areaCxmsg.setAttribute("style", estilo_areaCxmsg);
         this.divmsg.appendChild(areaCxmsg);
         
@@ -47,10 +47,10 @@ class Cxmsg {
             "padding: 5px" +
             "border-radius: 5px 5px 0px 0px"
 
-        const tituloCxmsg = document.createElement("div");
+        const tituloCxmsg = document.createElement("div");      // crianção do 'titulo'
         areaCxmsg.setAttribute("style", estilo_tituloCxmsg);
         tituloCxmsg.innerHTML = this.titulo;
-        areaCxmsg.appendChild(tituloCxmsg);
+        areaCxmsg.appendChild(tituloCxmsg);     // 'areaCxmsg' reçebe o titulo
     }
 
     ocultar =()=> {
