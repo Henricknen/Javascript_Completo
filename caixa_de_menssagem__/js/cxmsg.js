@@ -1,6 +1,4 @@
 class Cxmsg {
-    titulo = null;
-    texto = null;
     cor = null;
     destino = null;
     divmsg = null;
@@ -11,7 +9,9 @@ class Cxmsg {
         this.destino = document.body;
     }
 
-    mostrar =()=> {
+    mostrar =(titulo, texto)=> {
+        this.titulo = titulo;
+        this.texto = texto;
         this.divmsg = document.createElement("div");
         const estilo_divmsg =
             "display: flex;" +
@@ -61,7 +61,7 @@ class Cxmsg {
             "color: #000;" +
             "padding: 30px 5px;"
 
-        const corpoCxmsg = document.createElement("div");      // criação da 'div' que será o 'corpo'
+        const corpoCxmsg = document.createElement("div");
         corpoCxmsg.setAttribute("style", estilo_corpoCxmsg);
         corpoCxmsg.innerHTML = this.texto;
         areaCxmsg.appendChild(corpoCxmsg);
@@ -76,12 +76,28 @@ class Cxmsg {
             "padding: 5px;" +
             "border-radius: 0px 0px 5px 5px;"
 
-        const rodapeCxmsg = document.createElement("div");      // criação da 'div' que será o 'roda pé'
+        const rodapeCxmsg = document.createElement("div");
         rodapeCxmsg.setAttribute("style", estilo_rodapeCxmsg);
         areaCxmsg.appendChild(rodapeCxmsg);
+
+        const estilo_botaoCxmsg =
+            "background-color:" + this.cor + ";" +
+            "color: #fff;" +
+            "padding: 10px 50px;" +
+            "border-radius: 5px;" +
+            "cursor: pointer;" +
+            "text-transform: uppercase"
+
+        const btn_ok = document.createElement("button");        // criando 'botão'
+        btn_ok.setAttribute("style", estilo_botaoCxmsg);
+        btn_ok.innerHTML = "OK";
+        btn_ok.addEventListener("click", (evt)=> {
+            this.ocultar()      // chamando o 'método' ocultar
+        });
+        rodapeCxmsg.appendChild(btn_ok);
     }
 
     ocultar =()=> {
-
+        this.divmsg.remove();       // 'removendo' toda estrutura da caixa de menssagem
     }
 }
