@@ -1,5 +1,5 @@
 const config ={
-    titulo: "Título",
+    titulo: "Codificando JavaScript - Profissional",
     texto: "Luis Henrique Silva Ferreira",
     cor: "#48f"
 }

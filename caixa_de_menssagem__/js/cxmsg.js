@@ -65,6 +65,20 @@ class Cxmsg {
         corpoCxmsg.setAttribute("style", estilo_corpoCxmsg);
         corpoCxmsg.innerHTML = this.texto;
         areaCxmsg.appendChild(corpoCxmsg);
+        
+        const estilo_rodapeCxmsg =
+            "display: flex;" +
+            "justify-content: space-around;" +
+            "align-items: center;" +
+            "width: 100%;" +
+            "background-color: #ccc;" +
+            "color: #000;" +
+            "padding: 5px;" +
+            "border-radius: 0px 0px 5px 5px;"
+
+        const rodapeCxmsg = document.createElement("div");      // criação da 'div' que será o 'roda pé'
+        rodapeCxmsg.setAttribute("style", estilo_rodapeCxmsg);
+        areaCxmsg.appendChild(rodapeCxmsg);
     }
 
     ocultar =()=> {
