@@ -2,12 +2,12 @@ class Cxmsg {
     static cor = "#888";
     static destino = null;
     static divmsg = null;
-    static tipo = null;
-    static comando_sn = null;
+    static tipo = null;     // 'variável' tipo
+    static comando_sn = null;       // variável 'comando_sn'
     static textos = [];
 
-    static mostrar =(config, titulo, texto)=> {
-        this.cor = config.cor;
+    static mostrar =(config, titulo, texto)=> {     // método mostrar já recebendo as configurações 'config'
+        this.cor = config.cor;      // reçebendo cor da configuração 'config'
         this.tipo = config.tipo;
         this.textos = config.textos;
         this.comando_sn =()=> {config.comando_sn();}
@@ -97,18 +97,19 @@ class Cxmsg {
                 this.ocultar();
             });
             rodapeCxmsg.appendChild(btn_ok);
-        } else if(this.tipo == "sn") {
+        } else if(this.tipo == "sn") {      // se botão for do 'tipo' sn
             const btn_sim = document.createElement("button");
             btn_sim.setAttribute("style", estilo_botaoCxmsg);
-            btn_sim.innerHTML = this.textos[0];
+            btn_sim.innerHTML = this.textos[0];     // será criado botão do tipo 'sim'
             btn_sim.addEventListener("click", (evt)=> {
                 this.comando_sn();
                 this.ocultar();
-            });
+            });            
             rodapeCxmsg.appendChild(btn_sim);
+
             const btn_nao = document.createElement("button");
             btn_nao.setAttribute("style", estilo_botaoCxmsg);
-            btn_nao.innerHTML = this.textos[1];
+            btn_nao.innerHTML = this.textos[1];     // e também será criado botão do tipo 'não'
             btn_nao.addEventListener("click", (evt)=> {
                 this.ocultar();
             });
