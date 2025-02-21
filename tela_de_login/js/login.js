@@ -11,12 +11,12 @@ class Login {       // 'criando' classe Login
     static endpoint = "https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/";     // caminho do 'endpoint' que será consumido
     // https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/?matricula=123&senha=321
 
-    static login =(mat, pas, config = null)=> {        // método login responsável por fazer login reçebendo como parâmetro a matrícula 'mat' e senha 'pas'        
+    static login =(config = null)=> {        // método login responsável por fazer login reçebendo como parâmetro a matrícula 'mat' e senha 'pas'        
         if(config != null) {
             this.config = config;
         }
 
-        this.endpoint += `?matricula = ${mat}&senha = ${pas}`        // contrução do endpoint 'final'
+        // this.endpoint += `?matricula = ${mat}&senha = ${pas}`        // contrução do endpoint 'final'
         this.estilocss =
         ".fundoLogin { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px; background-color: rgba(0,0,0,0.75); box-sizing: border-box; }" +
         ".baseLogin { display: flex; justify-content: center; align-items: stretch; width: 50%; box-sizing: inherit; }" +
@@ -27,7 +27,7 @@ class Login {       // 'criando' classe Login
         ".campoLogin label { font-size: 18px; }" +
         ".campoLogin input { font-size: 18px; padding: 5px; background-color: #fff; border-radius: 5px; }" +
         ".botoesLogin { display: flex; justify-content: space-around; align-items: center; width: 100%; box-sizing: inherit; }" +
-        `.botoesLogin button { cursor: pointer; background-color: ${this.config.cor}; color: #fff; border-radius: 5px; padding: 10px; width: 100px; box-sizing: inherit; }`;
+        `.botoesLogin button { cursor: pointer; background-color: #${this.config.cor}; color: #fff; border-radius: 5px; padding: 10px; width: 100px; box-sizing: inherit; }`;
         
         const styleEstilo = document.createElement("style");
         styleEstilo.setAttribute("id", "id_estiloLogin");
@@ -88,12 +88,22 @@ class Login {       // 'criando' classe Login
         const btn_login  = document.createElement("button");
         btn_login.setAttribute("id", "btn_login");
         btn_login.innerHTML = "Login";
-        elementosLogin.appendChild(btn_login);
+        btn_login.addEventListener("click", (evt)=> {
+            if(this.verificaLogin() == true) {
+                this.fechar();
+            } else {
+
+            }
+        });
+        botoesLogin.appendChild(btn_login);
 
         const btn_cancelar = document.createElement("button");
         btn_cancelar.setAttribute("id", "btn_cancelar");
         btn_cancelar.innerHTML = "Cancelar";
-        elementosLogin.appendChild(btn_cancelar);
+        btn_cancelar.addEventListener("click", (evt)=> {
+            this.fechar();
+        });
+        botoesLogin.appendChild(btn_cancelar);
 
         const logoLogin = document.createElement("div");
         logoLogin.setAttribute("id", "logoLogin");
@@ -105,18 +115,23 @@ class Login {       // 'criando' classe Login
         imgLogoLogin.setAttribute("title", "Tela_de_Login");
         logoLogin.appendChild(imgLogoLogin);
 
+    }
 
+    static verificaLogin =()=> {
+        const mat = document.querySelector("#f_username").value;
+        const pass = document.querySelector("#f_senha").value;
+        if(mat == "123" && pas == "321") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        // fetch(this.endpoint)       // utilizando 'fetch' para 'consumir' o endpoint
-        // .then(res => res.json())        // tranformando o resultado em 'json'
-        // .then(res=> {
-        //      if(res) {      // se haver um retorno
-        //         this.logado = true;
-        //         this.matlogado = mat;
-        //         this.nomelogado = res.nome;
-        //         this.acessologado = res.acesso;
-        //      }
-        // });
+    static fechar =() => {      // méto que fecha a janela
+        const id_estiloLogin = document.querySelector("#id_estiloLogin");       // pegando elemento de id 'id_estiloLogin'
+        id_estiloLogin.remove();
+        const fundoLogin = document.querySelector("#fundoLogin");
+        fundoLogin.remove();
     }
 }
 
