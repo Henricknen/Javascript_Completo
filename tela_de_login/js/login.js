@@ -72,7 +72,7 @@ class Login {       // 'criando' classe Login
         elementosLogin.appendChild(campoLoginSenha);
         
         const labelSenha = document.createElement("label");
-        labelSenha.innerHTML = "Senha";
+        labelSenha.innerHTML = "Password";
         campoLoginSenha.appendChild(labelSenha);
         
         const inputSenha = document.createElement("input");
@@ -88,7 +88,7 @@ class Login {       // 'criando' classe Login
         const btn_login  = document.createElement("button");
         btn_login.setAttribute("id", "btn_login");
         btn_login.innerHTML = "Login";
-        btn_login.addEventListener("click", (evt)=> {
+        btn_login.addEventListener("click", (evt) => {
             if(this.verificaLogin() == true) {
                 this.fechar();
             } else {
@@ -99,9 +99,9 @@ class Login {       // 'criando' classe Login
 
         const btn_cancelar = document.createElement("button");
         btn_cancelar.setAttribute("id", "btn_cancelar");
-        btn_cancelar.innerHTML = "Cancelar";
-        btn_cancelar.addEventListener("click", (evt)=> {
-            this.fechar();
+        btn_cancelar.innerHTML = "Cancel";
+        btn_cancelar.addEventListener("click", (evt)=> {        // adiçionando evento de 'click'
+            this.fechar();      // chamando o 'método' fechar
         });
         botoesLogin.appendChild(btn_cancelar);
 
@@ -117,21 +117,22 @@ class Login {       // 'criando' classe Login
 
     }
 
-    static verificaLogin =()=> {
-        const mat = document.querySelector("#f_username").value;
-        const pass = document.querySelector("#f_senha").value;
+    static verificaLogin =()=> {        // método principal de verificação de login
+        const mat = document.querySelector("#inputUsername").value;
+        const pas = document.querySelector("#f_senha").value;
         if(mat == "123" && pas == "321") {
             return true;
         } else {
             return false;
         }
+    
     }
 
-    static fechar =() => {      // méto que fecha a janela
-        const id_estiloLogin = document.querySelector("#id_estiloLogin");       // pegando elemento de id 'id_estiloLogin'
-        id_estiloLogin.remove();
+    static fechar =() => {      // método que fecha a janela
         const fundoLogin = document.querySelector("#fundoLogin");
         fundoLogin.remove();
+        const id_estiloLogin = document.querySelector("#id_estiloLogin");       // pegando elemento de id 'id_estiloLogin'
+        id_estiloLogin.remove();
     }
 }
 
