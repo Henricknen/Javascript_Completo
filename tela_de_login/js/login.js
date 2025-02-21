@@ -15,7 +15,7 @@ class Login {       // 'criando' classe Login
         if(config != null) {
             this.config = config;
         }
-        
+
         this.endpoint += `?matricula = ${mat}&senha = ${pas}`        // contrução do endpoint 'final'
         this.estilocss =
         ".fundoLogin { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px; background-color: rgba(0,0,0,0.75); box-sizing: border-box; }" +
@@ -40,7 +40,70 @@ class Login {       // 'criando' classe Login
         fundoLogin.setAttribute("id", "fundoLogin");
         fundoLogin.setAttribute("class", "fundoLogin");
         document.body.prepend(fundoLogin);
+        
+        const baseLogin = document.createElement("div");
+        baseLogin.setAttribute("id", "baseLogin");
+        baseLogin.setAttribute("class", "baseLogin");
+        fundoLogin.appendChild(baseLogin);
+        
+        const elementosLogin = document.createElement("div");
+        elementosLogin.setAttribute("id", "elementosLogin");
+        elementosLogin.setAttribute("class", "elementosLogin");
+        baseLogin.appendChild(elementosLogin);
+        
+        const campoLoginUsername = document.createElement("div");
+        campoLoginUsername.setAttribute("id", "campoLoginUsername");
+        campoLoginUsername.setAttribute("class", "campoLogin");
+        elementosLogin.appendChild(campoLoginUsername);
+        
+        const labelUsername = document.createElement("label");
+        labelUsername.innerHTML = "Username";
+        campoLoginUsername.appendChild(labelUsername);
+        
+        const inputUsername = document.createElement("input");
+        inputUsername.setAttribute("id", "inputUsername");
+        inputUsername.setAttribute("type", "text");
+        inputUsername.setAttribute("name", "f_username");
+        campoLoginUsername.appendChild(inputUsername);
+        
+        const campoLoginSenha = document.createElement("div");
+        campoLoginSenha.setAttribute("id", "campoLoginSenha");
+        campoLoginSenha.setAttribute("class", "campoLogin");
+        elementosLogin.appendChild(campoLoginSenha);
+        
+        const labelSenha = document.createElement("label");
+        labelSenha.innerHTML = "Senha";
+        campoLoginSenha.appendChild(labelSenha);
+        
+        const inputSenha = document.createElement("input");
+        inputSenha.setAttribute("id", "f_senha");
+        inputSenha.setAttribute("type", "password");
+        inputSenha.setAttribute("name", "f_senha");
+        campoLoginSenha.appendChild(inputSenha);
 
+        const botoesLogin = document.createElement("div");
+        botoesLogin.setAttribute("class", "botoesLogin");
+        elementosLogin.appendChild(botoesLogin);
+
+        const btn_login  = document.createElement("button");
+        btn_login.setAttribute("id", "btn_login");
+        btn_login.innerHTML = "Login";
+        elementosLogin.appendChild(btn_login);
+
+        const btn_cancelar = document.createElement("button");
+        btn_cancelar.setAttribute("id", "btn_cancelar");
+        btn_cancelar.innerHTML = "Cancelar";
+        elementosLogin.appendChild(btn_cancelar);
+
+        const logoLogin = document.createElement("div");
+        logoLogin.setAttribute("id", "logoLogin");
+        logoLogin.setAttribute("class", "logoLogin");
+        baseLogin.appendChild(logoLogin);
+
+        const imgLogoLogin = document.createElement("img");
+        imgLogoLogin.setAttribute("src", this.config.img);
+        imgLogoLogin.setAttribute("title", "Tela_de_Login");
+        logoLogin.appendChild(imgLogoLogin);
 
 
 
