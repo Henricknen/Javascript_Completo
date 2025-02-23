@@ -11,7 +11,7 @@ class Login {       // 'criando' classe Login
         cor: "048",
         img: "./js.png"
     };
-    static endpoint = "https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/";     // caminho do 'endpoint' que será consumido
+    static endpoint = "https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/";     // caminho do 'endpoint' fixo
     
     static login =(callback_ok, callback_fail, config = null)=> {
         if(config != null) {
@@ -138,7 +138,7 @@ class Login {       // 'criando' classe Login
                 this.acessologado = null;
                 this.callback_fail();
             }
-            this.fechar();
+            // this.fechar();   
         });
     
     }
@@ -151,6 +151,4 @@ class Login {       // 'criando' classe Login
     }
 }
 
-export {Login};     // 'exportando' classe Login
-
- 
+// export {Login};     // 'exportando' classe Login

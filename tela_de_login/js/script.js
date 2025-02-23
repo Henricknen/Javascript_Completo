@@ -1,9 +1,7 @@
-import { Login } from "./login.js";
+// import { Login } from "./login.js";
 import { Cxmsg } from "./cxmsg.js";
 
-const callback_ok =()=> {
-
-}
+const callback_ok =()=> {}
 
 const callback_fail =()=> {
     const config = {
