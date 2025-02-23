@@ -4,17 +4,21 @@ class Login {       // 'criando' classe Login
     static nomelogado = null;
     static acssologado = null;
     static estilocss = null;
+    static callback_ok = null;
+    static callback_fail = null;
     static config = {
         cor: "048",
         img: "./js.png"
     };
     static endpoint = "https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/";     // caminho do 'endpoint' que será consumido
     
-    static login =(config = null)=> {        // método login responsável por fazer login reçebendo como parâmetro a matrícula 'mat' e senha 'pas'
+    static login =(callback_ok, callback_fail, config = null)=> {
         if(config != null) {
             this.config = config;
         }
 
+        this,callback_ok =()=> {callback_ok()};
+        this,callback_fail =()=> {callback_fail()};
         this.estilocss =
         ".fundoLogin { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px; background-color: rgba(0,0,0,0.75); box-sizing: border-box; }" +
         ".baseLogin { display: flex; justify-content: center; align-items: stretch; width: 50%; box-sizing: inherit; }" +
@@ -125,15 +129,16 @@ class Login {       // 'criando' classe Login
                 this.matlogado = mat;
                 this.nomelogado = res.nome;
                 this.acessologado = res.acesso;
-                this.fechar();      // chama método fechar se  o login for ok
+                callback_ok();
+                this.fechar();
             } else {
                 this.logado = false;
                 this.matlogado = null;
                 this.nomelogado = null;
                 this.acessologado = null;
-                alert("Login não efetuado! Username ou Password incorretos!!!");
+                this.callback_fail();
             }
-        })
+        });
     
     }
 
