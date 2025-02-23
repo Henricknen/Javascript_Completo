@@ -9,14 +9,12 @@ class Login {       // 'criando' classe Login
         img: "./js.png"
     };
     static endpoint = "https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/";     // caminho do 'endpoint' que será consumido
-    // https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/?matricula=123&senha=321
-
-    static login =(config = null)=> {        // método login responsável por fazer login reçebendo como parâmetro a matrícula 'mat' e senha 'pas'        
+    
+    static login =(config = null)=> {        // método login responsável por fazer login reçebendo como parâmetro a matrícula 'mat' e senha 'pas'
         if(config != null) {
             this.config = config;
         }
 
-        // this.endpoint += `?matricula = ${mat}&senha = ${pas}`        // contrução do endpoint 'final'
         this.estilocss =
         ".fundoLogin { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px; background-color: rgba(0,0,0,0.75); box-sizing: border-box; }" +
         ".baseLogin { display: flex; justify-content: center; align-items: stretch; width: 50%; box-sizing: inherit; }" +
@@ -89,12 +87,9 @@ class Login {       // 'criando' classe Login
         btn_login.setAttribute("id", "btn_login");
         btn_login.innerHTML = "Login";
         btn_login.addEventListener("click", (evt) => {
-            if(this.verificaLogin() == true) {
-                this.fechar();
-            } else {
-
-            }
+            this.verificaLogin();       // chamando método verificarLogin                
         });
+
         botoesLogin.appendChild(btn_login);
 
         const btn_cancelar = document.createElement("button");
@@ -119,12 +114,26 @@ class Login {       // 'criando' classe Login
 
     static verificaLogin =()=> {        // método principal de verificação de login
         const mat = document.querySelector("#inputUsername").value;
-        const pas = document.querySelector("#f_senha").value;
-        if(mat == "123" && pas == "321") {
-            return true;
-        } else {
-            return false;
-        }
+        let pas = document.querySelector("#f_senha").value;
+
+        const endpoint = `https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/?matricula=${mat}&senha=${pas}`;        // 'construção' do endpoint
+        fetch(endpoint)     // utilizando fetch para 'consumir' o endpoint
+        .then(res=>res.json())
+        .then(res=> {
+            if(res) {       // verifica a resposta do consumo da 'api' para fazer login
+                this.logado = true;
+                this.matlogado = mat;
+                this.nomelogado = res.nome;
+                this.acessologado = res.acesso;
+                this.fechar();      // chama método fechar se  o login for ok
+            } else {
+                this.logado = false;
+                this.matlogado = null;
+                this.nomelogado = null;
+                this.acessologado = null;
+                alert("Login não efetuado! Username ou Password incorretos!!!");
+            }
+        })
     
     }
 
