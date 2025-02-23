@@ -6,6 +6,7 @@ class Login {       // 'criando' classe Login
     static estilocss = null;
     static callback_ok = null;
     static callback_fail = null;
+
     static config = {
         cor: "048",
         img: "./js.png"
@@ -17,8 +18,8 @@ class Login {       // 'criando' classe Login
             this.config = config;
         }
 
-        this,callback_ok =()=> {callback_ok()};
-        this,callback_fail =()=> {callback_fail()};
+        this.callback_ok =()=> {callback_ok()};
+        this.callback_fail =()=> {callback_fail()};
         this.estilocss =
         ".fundoLogin { display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; position: absolute; top: 0px; left: 0px; background-color: rgba(0,0,0,0.75); box-sizing: border-box; }" +
         ".baseLogin { display: flex; justify-content: center; align-items: stretch; width: 50%; box-sizing: inherit; }" +
@@ -129,8 +130,7 @@ class Login {       // 'criando' classe Login
                 this.matlogado = mat;
                 this.nomelogado = res.nome;
                 this.acessologado = res.acesso;
-                callback_ok();
-                this.fechar();
+                this.callback_ok();
             } else {
                 this.logado = false;
                 this.matlogado = null;
@@ -138,6 +138,7 @@ class Login {       // 'criando' classe Login
                 this.acessologado = null;
                 this.callback_fail();
             }
+            this.fechar();
         });
     
     }
