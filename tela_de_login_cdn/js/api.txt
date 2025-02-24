@@ -1,0 +1,25 @@
+var http = require('http');
+var url = require('url');
+http.createServer(function (req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  
+  let parametros=url.parse(req.url, true);
+
+  let mat=parametros.query.matricula;
+  let pas=parametros.query.senha;
+
+  let dados=null
+
+  if(mat=="123" && pas=="321"){
+    dados = {
+      nome: "Luis Henrique",
+      acesso:10
+    }
+  }
+
+  res.end(JSON.stringify(dados));  
+}).listen(8080);
+
+
+//link para consumo da API:https://ca1cd47c-02bd-400e-9fc7-ca269723e5f0-00-1omvjer3mt67a.kirk.replit.dev/ 
