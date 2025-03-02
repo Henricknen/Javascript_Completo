@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Da Conficao - Do Ofendido - Das Testemunhas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="quiz-form">
+        <p>1. De acordo com o Art. 197, como deve ser aferido o valor da confissão?</p>
+    <input type="radio" id="q1-a" name="q1" value="B) Pelo confronto com as demais provas do processo">
+    <label for="q1-a">A) Apenas pelas palavras do acusado</label><br>
+    <input type="radio" id="q1-b" name="q1" value="B) Pelo confronto com as demais provas do processo">
+    <label for="q1-b">B) Pelo confronto com as demais provas do processo</label><br>
+    <input type="radio" id="q1-c" name="q1" value="C) Somente pelo juiz">
+    <label for="q1-c">C) Somente pelo juiz</label><br>
+    <input type="radio" id="q1-d" name="q1" value="D) Com base na confissão do acusado, independentemente de outras provas">
+    <label for="q1-d">D) Com base na confissão do acusado, independentemente de outras provas</label><br>
+    <div id="explicacao-q1" class="explicacao" style="display: none;"></div>
+
+    <!-- Questão 2 -->
+    <p>2. Segundo o Art. 198, qual a implicação do silêncio do acusado?</p>
+    <input type="radio" id="q2-a" name="q2" value="A) Constitui confissão">
+    <label for="q2-a">A) Constitui confissão</label><br>
+    <input type="radio" id="q2-b" name="q2" value="B) Pode ser usado como elemento para a formação do convencimento do juiz">
+    <label for="q2-b">B) Pode ser usado como elemento para a formação do convencimento do juiz</label><br>
+    <input type="radio" id="q2-c" name="q2" value="C) O juiz deve interpretar o silêncio como a afirmação de inocência">
+    <label for="q2-c">C) O juiz deve interpretar o silêncio como a afirmação de inocência</label><br>
+    <input type="radio" id="q2-d" name="q2" value="D) O silêncio é irrelevante para o julgamento">
+    <label for="q2-d">D) O silêncio é irrelevante para o julgamento</label><br>
+    <div id="explicacao-q2" class="explicacao" style="display: none;"></div>
+
+    <!-- Questão 3 -->
+    <p>3. O que estabelece o Art. 199 sobre a confissão feita fora do interrogatório?</p>
+    <input type="radio" id="q3-a" name="q3" value="A) Ela é considerada inválida">
+    <label for="q3-a">A) Ela é considerada inválida</label><br>
+    <input type="radio" id="q3-b" name="q3" value="B) A confissão deve ser registrada por termo nos autos">
+    <label for="q3-b">B) A confissão deve ser registrada por termo nos autos</label><br>
+    <input type="radio" id="q3-c" name="q3" value="C) O juiz pode descartá-la">
+    <label for="q3-c">C) O juiz pode descartá-la</label><br>
+    <input type="radio" id="q3-d" name="q3" value="D) A confissão deve ser invalidada por não ser realizada no interrogatório">
+    <label for="q3-d">D) A confissão deve ser invalidada por não ser realizada no interrogatório</label><br>
+    <div id="explicacao-q3" class="explicacao" style="display: none;"></div>
+
+    <!-- Questão 4 -->
+    <p>4. Segundo o Art. 200, a confissão é:</p>
+    <input type="radio" id="q4-a" name="q4" value="A) Indivisível e irretratável">
+    <label for="q4-a">A) Indivisível e irretratável</label><br>
+    <input type="radio" id="q4-b" name="q4" value="B) Divisível e irretratável">
+    <label for="q4-b">B) Divisível e irretratável</label><br>
+    <input type="radio" id="q4-c" name="q4" value="C) Divisível e retratável">
+    <label for="q4-c">C) Divisível e retratável</label><br>
+    <input type="radio" id="q4-d" name="q4" value="D) Indivisível e retratável">
+    <label for="q4-d">D) Indivisível e retratável</label><br>
+    <div id="explicacao-q4" class="explicacao" style="display: none;"></div
+    </form>
+
+    <button type="button" id="corrigir-btn">Corrigir</button>
+    <button type="button" id="limpar-btn">Limpar Dados</button>
+
+    <div id="results" style="display:none;"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

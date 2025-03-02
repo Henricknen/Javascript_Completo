@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box; /* Aplica box-sizing a todos os elementos */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    font-size: 1rem;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px; /* Adiciona padding ao formulário */
+}
+
+p {
+    font-weight: bold;
+}
+
+.explicacao {
+    color: blue; /* Muda a cor do texto para azul */
+    font-size: 14px; /* Tamanho da fonte */
+    margin-top: 5px; /* Espaço acima do texto */
+}
+
+/* p, label {
+    font-weight: normal; */
+
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%; /* Botão ocupa a largura total do contêiner */
+}
+
+#results {
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%; /* Limita a largura máxima da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+/* Garantir que os contêineres das imagens não ultrapassem a tela */
+form, p {
+    width: 100%;
+    overflow-x: auto; /* Permite rolagem horizontal se necessário */
+}
+
+/* Media queries para dispositivos móveis */
+@media (max-width: 600px) {
+    body {
+        margin: 10px; /* Margem reduzida em telas menores */
+        font-size: 0.9rem; /* Tamanho de fonte menor para melhorar legibilidade */
+    }
+
+    button {
+        font-size: 14px; /* Tamanho da fonte do botão ajustado */
+        padding: 8px 16px; /* Ajusta o padding do botão */
+    }
+
+    form {
+        padding: 0 10px; /* Reduz o padding do formulário em dispositivos menores */
+    }
+
+    p {
+        font-size: 1rem; /* Tamanho de fonte do parágrafo ajustado */
+    }
+}
