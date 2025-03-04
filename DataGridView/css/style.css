@@ -14,7 +14,7 @@
 
 .dgvTitulos {
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
     align-self: flex-start;
     flex-direction: row;
     background-color: #138;
@@ -56,10 +56,12 @@
 
 .dgvLinha:hover {
     background-color:#088 !important;
+    color: #fff !important;
+    cursor: pointer;
 }
 
 .c1 {
-    width: 100px;
+    width: 50px;
 }
 
 .c2 {
