@@ -15,6 +15,7 @@
 .dgvTitulos {
     display: flex;
     justify-content:flex-start;
+    align-self: flex-start;
     flex-direction: row;
     background-color: #138;
     color: #fff;
@@ -39,8 +40,26 @@
     flex-direction: row;
 }
 
+.dgvLinha:hover {
+    background-color: #088 !important;
+    cursor: pointer;
+    color: #fff !important;
+}
+
+.dgvLinha:nth-child(odd)  {
+    background-color: #ddd;
+}
+
+.dgvLinha:nth-child(even)  {
+    background-color: #eee;
+}
+
+.dgvLinha:hover {
+    background-color:#088 !important;
+}
+
 .c1 {
-    width: 50px;
+    width: 100px;
 }
 
 .c2 {
