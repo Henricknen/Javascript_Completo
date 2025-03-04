@@ -4,17 +4,17 @@ const configdgv = {     // arquivo de configuração
 }
 
 const dgv =(configdgv)=> {
-    const Dados = document.getElementById(configdgv.idDestino);     // destino do dados
+    const dgvDados = document.getElementById(configdgv.idDestino);     // destino do dados
     fetch(configdgv.endpoint)     // 'consumindo' o endpoint
     .then(res=> res.json())
     .then(res=> {
-        res.forEach(el => {
-            const dgvLinha = doucment.createElement("div");
+        res.forEach(el => {     // 'forEach' percorre os elementos d res
+            const dgvLinha = document.createElement("div");
             dgvLinha.setAttribute("class", "dgvLinha");
 
-            const c1 = document.createElement("div");
+            const c1 = document.createElement("div");       // criando uma 'div'
             c1.setAttribute("class", "c1");
-            c1.innerHTML =el.id;
+            c1.innerHTML = el.id;
             dgvLinha.appendChild(c1);
 
             const c2 = document.createElement("div");
