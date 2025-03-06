@@ -1,0 +1,12 @@
+banco: datagridview 
+tabela: produtos
+
+INSERT INTO `produtos`(n_id_produto, s_nome_produto, s_marca_produto, s_modelo_produto) VALUES (null, "Processador", "intel", "i7");
+
+INSERT INTO `produtos`(n_id_produto, s_nome_produto, s_marca_produto, s_modelo_produto) VALUES (null, "Mouse", "Logitech", "M90");
+
+INSERT INTO `produtos`(n_id_produto, s_nome_produto, s_marca_produto, s_modelo_produto) VALUES (null, "Monitor", "Samsung", "Symaster");
+
+INSERT INTO `produtos`(n_id_produto, s_nome_produto, s_marca_produto, s_modelo_produto) VALUES (null, "Impressora", "HP", "P1005");
+
+INSERT INTO `produtos`(n_id_produto, s_nome_produto, s_marca_produto, s_modelo_produto) VALUES (null, "Drone", "JI", "Mini 3");
