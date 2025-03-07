@@ -41,5 +41,9 @@
 
 .aba_selecionada {
     /* background-color: #248 !important; */
-    background-color: #ddd !important;
+    background-color: #ddd   !important;
+}
+
+.if_principal {
+    border: 1px solid #f00;   
 }
